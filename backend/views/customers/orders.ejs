@@ -1,0 +1,121 @@
+<section class="orders light-section">
+    <div class="container mx-auto pt-12">
+        <h1 class="font-bold text-lg mb-4">All orders</h1>
+        <% if(messages.success) { %>
+        <div id="success-alert" class="flex items-center bg-green-500 text-white text-sm font-bold px-4 py-3"
+            role="alert">
+            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path
+                    d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z" />
+            </svg>
+            <p><%= messages.success %></p>
+        </div>
+        <% } %>
+        <div class="w-full max-w-6xl mx-auto p-4">
+            <h2 class="text-2xl font-bold mb-6">Your Orders</h2>
+            
+            <div class="space-y-6">
+                <% if(orders.length) { %>
+                    <% orders.forEach((order) => { %>
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <!-- Order Header -->
+                            <div class="p-4 bg-gray-50 border-b">
+                                <div class="flex justify-between items-center flex-wrap gap-4">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span class="text-sm text-gray-600">
+                                            <%= moment(order.createdAt).format('MMMM D, YYYY h:mm A') %>
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <!-- Track Order Link -->
+                                        <a href="/customer/orders/<%= order._id %>" 
+                                           class="inline-flex items-center px-3 py-1.5 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors text-sm">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                            </svg>
+                                            Track Order
+                                        </a>
+                                        <!-- Payment Status Badge -->
+                                        <span class="px-2 py-1 rounded-full text-sm <%= order.paymentStatus ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' %>">
+                                            <%= order.paymentStatus ? 'Paid' : 'Pending' %>
+                                        </span>
+                                        <!-- Order Status Badge -->
+                                        <span class="px-2 py-1 rounded-full text-sm 
+                                            <%= order.status.toLowerCase() === 'completed' ? 'bg-green-100 text-green-800' : 
+                                                order.status.toLowerCase() === 'prepared' ? 'bg-blue-100 text-blue-800' : 
+                                                'bg-gray-100 text-gray-800' %>">
+                                            <%= order.status.charAt(0).toUpperCase() + order.status.slice(1) %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- Order Items -->
+                            <div class="p-4">
+                                <div class="grid gap-4">
+                                    <% Object.values(order.items).forEach((orderItem) => { %>
+                                        <div class="flex items-center gap-4">
+                                            <img 
+                                                src="/img/<%= orderItem.item.image %>" 
+                                                alt="<%= orderItem.item.name %>" 
+                                                class="w-16 h-16 object-cover rounded"
+                                            >
+                                            <div class="flex-1">
+                                                <h3 class="font-medium"><%= orderItem.item.name %></h3>
+                                                <p class="text-sm text-gray-600">
+                                                    Size: <%= orderItem.item.size %> | Quantity: <%= orderItem.qty %>
+                                                </p>
+                                            </div>
+                                            <div class="text-right">
+                                                <p class="font-medium">₹<%= orderItem.item.price * orderItem.qty %></p>
+                                                <p class="text-sm text-gray-600">₹<%= orderItem.item.price %> each</p>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+        
+                            <!-- Order Footer -->
+                            <div class="p-4 border-t bg-gray-50">
+                                <div class="grid gap-2">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                        <span class="text-sm text-gray-600"><%= order.address %></span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                        </svg>
+                                        <span class="text-sm text-gray-600"><%= order.phone %></span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                                        </svg>
+                                        <span class="text-sm text-gray-600"><%= order.paymentType.toUpperCase() %></span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 text-right">
+                                    <p class="text-lg font-bold">
+                                        Total: ₹<%= Object.values(order.items).reduce((total, item) => total + (item.item.price * item.qty), 0) %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <div class="text-center py-8 bg-white rounded-lg">
+                        <p class="text-gray-500">No orders found!</p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        
+    </div>
+</section>

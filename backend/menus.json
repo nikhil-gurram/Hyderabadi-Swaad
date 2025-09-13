@@ -1,0 +1,205 @@
+[
+  {
+    "_id": { "$oid": "5fff1111a27a66807cf2bea0" },
+    "name": "Hyderabadi Dum Biryani",
+    "image": "hdb.png",
+    "price": "300",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1112a27a66807cf2bea1" },
+    "name": "Veg Dum Biryani",
+    "image": "vdb.png",
+    "price": "250",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1113a27a66807cf2bea2" },
+    "name": "Zafrani Biryani",
+    "image": "zb.png",
+    "price": "400",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1114a27a66807cf2bea3" },
+    "name": "Kacchi Gosht Biryani",
+    "image": "kgb.png",
+    "price": "450",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1115a27a66807cf2bea4" },
+    "name": "Shikampuri Kebab",
+    "image": "sk.png",
+    "price": "150",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1116a27a66807cf2bea5" },
+    "name": "Pathar Ka Gosht",
+    "image": "pkg.png",
+    "price": "250",
+    "size": "medium"
+  },
+  {
+    "_id": { "$oid": "5fff1117a27a66807cf2bea6" },
+    "name": "Paneer Tikka",
+    "image": "pt.png",
+    "price": "200",
+    "size": "medium"
+  },
+  {
+    "_id": { "$oid": "5fff1118a27a66807cf2bea7" },
+    "name": "Veg Shikampuri",
+    "image": "vs.png",
+    "price": "120",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1119a27a66807cf2bea8" },
+    "name": "Nihari Gosht",
+    "image": "ng.png",
+    "price": "400",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1110a27a66807cf2bea9" },
+    "name": "Hyderabadi Mutton Korma",
+    "image": "hmk.png",
+    "price": "350",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1111a27a66807cf2beaa" },
+    "name": "Mirchi Ka Salan",
+    "image": "mks.png",
+    "price": "180",
+    "size": "regular"
+  },
+  {
+    "_id": { "$oid": "5fff1112a27a66807cf2beab" },
+    "name": "Bagara Baingan",
+    "image": "bb.png",
+    "price": "160",
+    "size": "regular"
+  },
+  {
+    "_id": { "$oid": "5fff1113a27a66807cf2beac" },
+    "name": "Bagara Rice",
+    "image": "br.png",
+    "price": "150",
+    "size": "regular"
+  },
+  {
+    "_id": { "$oid": "5fff1114a27a66807cf2bead" },
+    "name": "Khichdi with Khatta and Keema",
+    "image": "kkk.png",
+    "price": "200",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1115a27a66807cf2beae" },
+    "name": "Rumali Roti",
+    "image": "rr.png",
+    "price": "30",
+    "size": "single"
+  },
+  {
+    "_id": { "$oid": "5fff1116a27a66807cf2beaf" },
+    "name": "Naan",
+    "image": "n.png",
+    "price": "40",
+    "size": "single"
+  },
+  {
+    "_id": { "$oid": "5fff1117a27a66807cf2beb0" },
+    "name": "Paratha",
+    "image": "p.png",
+    "price": "50",
+    "size": "single"
+  },
+  {
+    "_id": { "$oid": "5fff1118a27a66807cf2beb1" },
+    "name": "Hyderabadi Haleem",
+    "image": "hh.png",
+    "price": "300",
+    "size": "medium"
+  },
+  {
+    "_id": { "$oid": "5fff1119a27a66807cf2beb2" },
+    "name": "Keema Samosa",
+    "image": "ks.png",
+    "price": "100",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1110a27a66807cf2beb3" },
+    "name": "Pani Puri",
+    "image": "pp.png",
+    "price": "50",
+    "size": "plate"
+  },
+  {
+    "_id": { "$oid": "5fff1111a27a66807cf2beb4" },
+    "name": "Dahi Puri",
+    "image": "dp.png",
+    "price": "60",
+    "size": "plate"
+  },
+  {
+    "_id": { "$oid": "5fff1112a27a66807cf2beb5" },
+    "name": "Double Ka Meetha",
+    "image": "dkm.png",
+    "price": "120",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1113a27a66807cf2beb6" },
+    "name": "Qubani Ka Meetha",
+    "image": "qkm.png",
+    "price": "150",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1114a27a66807cf2beb7" },
+    "name": "Sheer Khurma",
+    "image": "sk.png",
+    "price": "100",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1115a27a66807cf2beb8" },
+    "name": "Gulab Jamun",
+    "image": "gj.png",
+    "price": "80",
+    "size": "plate"
+  },
+  {
+    "_id": { "$oid": "5fff1116a27a66807cf2beb9" },
+    "name": "Irani Chai",
+    "image": "ic.png",
+    "price": "40",
+    "size": "cup"
+  },
+  {
+    "_id": { "$oid": "5fff1117a27a66807cf2beba" },
+    "name": "Masala Soda",
+    "image": "ms.png",
+    "price": "50",
+    "size": "glass"
+  },
+  {
+    "_id": { "$oid": "5fff1118a27a66807cf2bebb" },
+    "name": "Sweet Lassi",
+    "image": "sl.png",
+    "price": "60",
+    "size": "glass"
+  },
+  {
+    "_id": { "$oid": "5fff1119a27a66807cf2bebc" },
+    "name": "Falooda",
+    "image": "f.png",
+    "price": "80",
+    "size": "glass"
+  }
+]

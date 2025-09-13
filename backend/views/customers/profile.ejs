@@ -1,0 +1,39 @@
+<div class="mx-auto my-8 max-w-md p-4 sm:p-8">
+  <!-- Profile Header -->
+  <div class="bg-blue-600 text-white rounded-t-lg p-6 text-center">
+    <h1 class="text-2xl font-bold">My Profile</h1>
+    <p class="mt-2 text-lg">Welcome, <%= user.name %>!</p>
+  </div>
+
+  <!-- Profile Information Card -->
+  <div class="bg-white shadow-lg rounded-b-lg p-6">
+    <div class="mb-4">
+      <h2 class="text-lg font-semibold text-gray-800">Profile Details</h2>
+    </div>
+
+    <div class="text-gray-700">
+      <p class="py-2"><strong>Name:</strong> <%= user.name %></p>
+      <p class="py-2"><strong>Email:</strong> <%= user.email %></p>
+      <p class="py-2"><strong>Phone:</strong> <%= user.phone ? user.phone : 'Not provided' %></p>
+      <p class="py-2"><strong>Address:</strong> <%= user.address ? user.address : 'Not provided' %></p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="mt-6 flex justify-between">
+      <!-- Edit Profile Button -->
+      <a href="/profile/edit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        Edit Profile
+      </a>
+
+      <% if (user.role === 'delivery_partner') { %>
+        <a href="/delivery/orders" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
+            View All Orders
+        </a>
+      <% } else { %>
+        <a href="/customer/orders" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
+            View Order History
+        </a>
+      <% } %>
+    </div>
+  </div>
+</div>

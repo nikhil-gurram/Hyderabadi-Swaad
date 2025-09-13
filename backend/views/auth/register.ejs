@@ -1,0 +1,65 @@
+<section class="flex justify-center items-center min-h-screen bg-gray-50 px-4 py-12">
+  <div class="w-full max-w-md relative">
+      <div class="bg-white shadow-xl rounded-lg p-8">
+          <form action="/register" method="POST" class="space-y-6">
+              <% if(messages.error) { %>
+              <span class="text-red-500 text-center text-sm mb-4 block"><%= messages.error %></span>
+              <% } %>
+
+              <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Create Your Account</h2>
+
+              <div class="space-y-2">
+                  <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                  <input 
+                      name="name" 
+                      value="<%= messages.name %>" 
+                      id="name" 
+                      type="text" 
+                      placeholder="Enter your name"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-150 ease-in-out" 
+                  />
+              </div>
+
+              <div class="space-y-2">
+                  <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                  <input 
+                      name="email" 
+                      value="<%= messages.email %>" 
+                      id="email" 
+                      type="email" 
+                      placeholder="Enter your email"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-150 ease-in-out" 
+                  />
+              </div>
+
+              <div class="space-y-2">
+                  <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                  <input 
+                      name="password" 
+                      id="password" 
+                      type="password" 
+                      placeholder="Enter your password"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-150 ease-in-out" 
+                  />
+                  <p class="text-sm text-gray-500 mt-1">* Minimum 8 characters</p>
+              </div>
+
+              <div class="pt-2">
+                  <button 
+                      type="submit" 
+                      class="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 ease-in-out"
+                  >
+                      Register
+                  </button>
+              </div>
+
+              <div class="text-center text-sm text-gray-600">
+                  <a href="/login" class="hover:text-blue-600 transition duration-150 ease-in-out">
+                      Already have an account?
+                      <span class="font-medium text-blue-600 hover:text-blue-700 ml-1">Log In</span>
+                  </a>
+              </div>
+          </form>
+      </div>
+  </div>
+</section>

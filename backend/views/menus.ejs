@@ -1,0 +1,149 @@
+<section class="min-h-screen bg-gray-50 py-16 relative">
+  <!-- Optional: Background Pattern -->
+  <div
+    class="absolute inset-0 bg-[url('/img/background-pattern.png')] bg-cover opacity-10 pointer-events-none"
+  ></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+      <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl">
+        Our Menu
+      </h1>
+      <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
+        Discover our delicious selection of hand-crafted pizzas made with fresh
+        ingredients
+      </p>
+    </div>
+
+    <!-- Menu Grid -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8"
+    >
+      <% pizzas.forEach(function(pizza) { %>
+      <div
+        class="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-0.5"
+      >
+        <!-- Image Section -->
+        <div class="relative h-64 overflow-hidden">
+          <img
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+            src="/img/<%= pizza.image %>"
+            alt="<%= pizza.name %>"
+          />
+          <!-- Size Badge -->
+          <span
+            class="absolute top-4 right-4 bg-white/80 backdrop-blur-md text-orange-600 text-xs px-4 py-1.5 rounded-full uppercase font-semibold shadow-md"
+          >
+            <%= pizza.size %>
+          </span>
+        </div>
+
+        <!-- Content Section -->
+        <div class="p-6">
+          <div class="min-h-[120px]">
+            <h2
+              class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-500 transition-colors duration-300"
+            >
+              <%= pizza.name %>
+            </h2>
+
+            <!-- Optional: Add description if available -->
+            <% if (pizza.description) { %>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+              <%= pizza.description %>
+            </p>
+            <% } %>
+          </div>
+
+          <!-- Price and Add to Cart Section -->
+          <div class="mt-6 flex items-center justify-between">
+            <div class="flex flex-col">
+              <span class="text-sm text-gray-500 uppercase">Price</span>
+              <span class="text-3xl font-bold text-gray-900"
+                >₹<%= pizza.price %></span
+              >
+            </div>
+
+            <!-- Check if item is already in cart -->
+            <% let itemInCart = false; let itemQty = 0; if (session &&
+            session.cart && session.cart.items && session.cart.items[pizza._id])
+            { itemInCart = true; itemQty = session.cart.items[pizza._id].qty; }
+            %> <% if (itemInCart) { %>
+            <!-- Quantity Controls for items in cart -->
+            <div class="flex items-center gap-2">
+              <button
+                data-pizza="<%= JSON.stringify(pizza) %>"
+                class="decrease-qty bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <span
+                class="bg-gray-100 px-3 py-1 rounded-lg font-semibold text-gray-800 min-w-[40px] text-center"
+              >
+                <%= itemQty %>
+              </span>
+              <button
+                data-pizza="<%= JSON.stringify(pizza) %>"
+                class="increase-qty bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+            <% } else { %>
+            <!-- Add to Cart Button -->
+            <button
+              data-pizza="<%= JSON.stringify(pizza) %>"
+              class="add-to-cart bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 active:from-orange-700 active:to-red-700 text-white px-6 py-3 rounded-xl flex items-center gap-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-white"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="font-semibold text-white">Add to Cart</span>
+            </button>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <!-- Empty State (Optional) -->
+    <% if (pizzas.length === 0) { %>
+    <div class="text-center py-16">
+      <div class="text-gray-400 text-xl">No items available at the moment</div>
+    </div>
+    <% } %>
+  </div>
+</section>
